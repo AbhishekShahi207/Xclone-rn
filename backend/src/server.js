@@ -23,7 +23,13 @@ app.get("/health",(req,res)=>{
 
 //api
 app.use("/api/users",userRoutes)
-app.use("/api/posts",postRoutes)
+app.use("/api/posts",postRoutes) 
+
+//error handling middleware
+app.use((err,req,res)=>{
+  console.error("Unhandled Error",err);
+  res.status(500).json({error:err.message || "Internal Server Error"})
+})
 
 
 //server 
