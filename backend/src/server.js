@@ -4,6 +4,7 @@ import { connectDB } from './config/db.js'
 import cors from "cors";
 import {clerkMiddleware} from "@clerk/express"
 import userRoutes from "./routes/user.route.js"
+import postRoutes from "./routes/post.route.js"
 
 const app=express()
 
@@ -11,7 +12,7 @@ const app=express()
 //middleware
 app.use(cors())
 app.use(express.json())
-app.use(c)
+app.use(clerkMiddleware())
 
 
 app.get("/health",(req,res)=>{
@@ -22,6 +23,7 @@ app.get("/health",(req,res)=>{
 
 //api
 app.use("/api/users",userRoutes)
+app.use("/api/posts",postRoutes)
 
 
 //server 
