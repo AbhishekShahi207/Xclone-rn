@@ -43,7 +43,7 @@ await Post.findByIdAndUpdate(postId,{
     $push:{comments:comment._id}
 })
 
-//create notifiation if not commenting on own post
+//create notification if not commenting on own post
 if(post.user.toString() !== user._id.toString()){
     await Notification.create({
         from:user._id,
