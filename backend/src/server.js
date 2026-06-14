@@ -19,7 +19,7 @@ app.use(clerkMiddleware())
 app.use(arcjetMiddleware)
 
 
-app.get("/health",(req,res)=>{
+app.get("/",(req,res)=>{
     res.send("Api is Runing")
 })
 
